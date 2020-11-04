@@ -41,12 +41,12 @@ function renderImages(e) {
         markup = card(hits);
         refs.gallery.insertAdjacentHTML('beforeend', markup);
         
-      setTimeout(() => {
-        window.scrollTo({
-          top: document.documentElement.scrollHeight,
-          behavior: 'smooth',
-        });
-      }, 1000);
+        setTimeout(() => {
+          window.scrollTo({
+            top: document.documentElement.scrollHeight,
+            behavior: 'smooth',
+          });
+        }, 1000);
     })
     };  
     document.querySelector('.more').addEventListener('click', showMore);

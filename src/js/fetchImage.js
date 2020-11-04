@@ -1,5 +1,4 @@
 export function fetchImg(query, page, key){
-  console.log(page);
     const url = `https://pixabay.com/api/?image_type=photo&orientation=horizontal&q=${query}&page=${page}&per_page=12&key=${key}`;
 
     return fetch(url)
