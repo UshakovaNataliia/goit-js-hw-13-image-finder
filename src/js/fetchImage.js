@@ -1,4 +1,5 @@
-const fetchImg = (query, page, key) => {
+export function fetchImg(query, page, key){
+  console.log(page);
     const url = `https://pixabay.com/api/?image_type=photo&orientation=horizontal&q=${query}&page=${page}&per_page=12&key=${key}`;
 
     return fetch(url)
@@ -6,4 +7,3 @@ const fetchImg = (query, page, key) => {
       .then(data => data.hits)
       .catch(err => console.log(err));
 };
-export default fetchImg;

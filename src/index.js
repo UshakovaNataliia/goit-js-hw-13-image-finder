@@ -24,4 +24,3 @@ export function openModal(event){
 };
 
 refs.form.addEventListener('submit', renderImages);
-
