@@ -16,6 +16,7 @@ function renderImages(e) {
   query = refs.input.value;
   page = 1;
 
+
   fetchImg(query, page, key)
   .then(hits => {
     if (hits.length === 0) {
@@ -25,26 +26,24 @@ function renderImages(e) {
         });
         refs.form.reset();
         return;
-    }
+    } 
 
     markup = card(hits);
     refs.gallery.innerHTML = markup;
-    
-    setTimeout(() => {
-        toScroll();
-    }, 1000);
     
     moreBtnCreate();
     refs.form.reset();
 
     function showMore(){
+        let height = refs.gallery.clientHeight;
         page += 1;
+
         fetchImg(query, page, key)
         .then(hits => {
         markup = card(hits);
         refs.gallery.insertAdjacentHTML('beforeend', markup);
 
-        toScroll(); 
+        toScroll(height); 
       })
     };  
     document.querySelector('.more').addEventListener('click', showMore);
@@ -52,9 +51,9 @@ function renderImages(e) {
  refs.gallery.addEventListener('click', openModal);
 };
 
-function toScroll() {
+function toScroll(height) {
     window.scrollTo({
-        top: document.documentElement.scrollHeight - document.documentElement.clientHeight,
+        top: height,
         behavior: 'smooth',
     });
 }
