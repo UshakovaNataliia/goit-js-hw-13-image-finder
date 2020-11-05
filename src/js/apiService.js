@@ -29,29 +29,34 @@ function renderImages(e) {
 
     markup = card(hits);
     refs.gallery.innerHTML = markup;
-
+    
+    setTimeout(() => {
+        toScroll();
+    }, 1000);
+    
     moreBtnCreate();
     refs.form.reset();
-        
+
     function showMore(){
         page += 1;
-
         fetchImg(query, page, key)
         .then(hits => {
         markup = card(hits);
         refs.gallery.insertAdjacentHTML('beforeend', markup);
-        
-        setTimeout(() => {
-          window.scrollTo({
-            top: document.documentElement.scrollHeight,
-            behavior: 'smooth',
-          });
-        }, 1000);
-    })
+
+        toScroll(); 
+      })
     };  
     document.querySelector('.more').addEventListener('click', showMore);
  });
  refs.gallery.addEventListener('click', openModal);
 };
+
+function toScroll() {
+    window.scrollTo({
+        top: document.documentElement.scrollHeight - document.documentElement.clientHeight,
+        behavior: 'smooth',
+    });
+}
 
 export default renderImages;
