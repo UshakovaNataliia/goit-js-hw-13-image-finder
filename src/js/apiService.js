@@ -53,7 +53,7 @@ function renderImages(e) {
 
 function toScroll(height) {
     window.scrollTo({
-        top: height,
+        top: height + refs.form.clientHeight,
         behavior: 'smooth',
     });
 }
